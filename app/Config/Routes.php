@@ -30,8 +30,31 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
 
+$routes->get('/', 'Home::index');
+$routes->get('/mahasiswa', 'Helloworld::show');
+$routes->get('/chandra', function(){
+	echo view("Mahasiswa/header");
+	echo view("Mahasiswa/index");
+	echo view("Mahasiswa/footer");
+});
+$routes->get('/coba/(:any)/(:num)', 'Helloworld::index/$1/$2');
+
+
+
+// //show data dari fungsi pada controller tanpa parameter
+// $routes->get('/bebas', 'Hello::show');
+
+// //show data menggunakan 2 parameter pada fungsi Controller
+// $routes->get('/detail/(:any)/(:num)', 'HelloWorld::index/$1/$2');
+
+// //show data menggunakan variabel global
+// $routes->get('/hello', 'Hello:global');
+
+// //show data menampilkan halaman index.php
+// $routes->get('/tabel', function()){
+// 	echo view("mahasiswa/index");
+// }
 /**
  * --------------------------------------------------------------------
  * Additional Routing
